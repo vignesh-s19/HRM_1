@@ -66,6 +66,7 @@ pipeline {
    //      }
 
                     // Switch statement for validation
+	  stage('switch condition')
                     switch (prBody) {
                         case 'null':
                             echo "Description matches 'null'"
