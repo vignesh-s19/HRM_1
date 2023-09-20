@@ -47,24 +47,40 @@ pipeline {
                 }
             }
         }
-		 stage('Conditional Stage') {
+		 // stage('Conditional Stage') {
+   //          steps {
+   //              script {
+   //                  def output
+   //                  if (env.PR_BODY == "[null]") {
+   //                    output = sh(script: 'echo "Not available"', returnStdout: true).trim()
+   //                    echo "The output is: ${output}"
+   //                    env.PR_BODY_OUTPUT = output
+   //                    echo "Vikki: ${PR_BODY_OUTPUT}"
+   //                      return;
+   //                  } else {
+   //                    output = sh(script: '"${env.PR_BODY}"', returnStdout: true).trim()
+
+   //                  }
+   //              }
+   //          }
+   //      }
+
+	          stage('Example Stage') {
             steps {
                 script {
-                    def output
-                    if (env.PR_BODY == "[null]") {
-                      output = sh(script: 'echo "Not available"', returnStdout: true).trim()
-                      echo "The output is: ${output}"
-                      env.PR_BODY_OUTPUT = output
-                      echo "Vikki: ${PR_BODY_OUTPUT}"
-                        return;
-                    } else {
-                      output = sh(script: '"${env.PR_BODY}"', returnStdout: true).trim()
+                    def fruit = '[null]'
 
+                    switch ('[null]') {
+                        case 'apple':
+                            echo 'This is an apple'
+                            break
+                            
+                        default:
+                            echo 'Unknown fruit'
                     }
                 }
             }
         }
-
       stage('E-Mail Notification') {
         steps {
            script {
