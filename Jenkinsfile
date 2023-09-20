@@ -6,7 +6,7 @@ pipeline {
     TIMESTAMP         = sh(returnStdout: true, script: 'date "+%Y-%m-%d_%H-%M-%S"').trim()
     JOB_TIME          = sh(returnStdout: true, script: 'date "+%Y-%m-%d __ %H:%M:%S"').trim()
     ZIP_FILENAME      = "HRMS_V1_${TIMESTAMP}.zip"
-    GIT_API_PAT_TOKEN = credentials('Github-Token-Jenkins-Mail-CICD')
+    GIT_API_PAT_TOKEN = credentials('vignesh-s19')
     EMAIL_TO_PEOPLE   = "vigneshwaran.sivasubramanian@quadgen.com"
     
   }
