@@ -66,7 +66,7 @@ pipeline {
    //      }
 
                     // Switch statement for validation
-	  stage('switch condition')
+	  stage('switch condition') {
                     switch (prBody) {
                         case 'null':
                             echo "Description matches 'null'"
@@ -74,7 +74,7 @@ pipeline {
                         default:
                             echo "Description has some expected value"
                     }
-
+	  }
   }
   
 }
