@@ -78,7 +78,7 @@ pipeline {
       stage('E-Mail Notification') {
         steps {
            script {
-                     // Defining the email subject along with PR Details
+                     // Defining the email subject along with PR Details:
                     def emailSubject = "On-Premise: CICD Pipeline #${env.BUILD_NUMBER}  ${env.JOB_NAME} is Triggered for PR: #${env.PR_NUM}  Title:${env.PR_TITLE}"
 
                     // Defining the email body contents along with PR Details
