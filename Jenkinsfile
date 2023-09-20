@@ -34,10 +34,16 @@ pipeline {
                     def prBody   = prDetails.body
                     def prNUM    = prDetails.number
 
+		    // Remove special characters from title and description
+                    prTitle = prTitle.replaceAll(/[^a-zA-Z0-9\s]/, '')
+                    prBody = prBody.replaceAll(/[^a-zA-Z0-9\s]/, '')
+
                     // Set environment variables
                     env.PR_TITLE = prTitle
                     env.PR_BODY = prBody
                     env.PR_NUM = prNUM
+
+		    echo "The value is: ${PR_BODY}"
                 }
             }
         }
@@ -59,54 +65,14 @@ pipeline {
    //          }
    //      }
 
-	          stage('Example Stage') {
-            steps {
-                script {
-                    // def fruit = '[null]'
-		    def apple
-                    switch ('apple') {
-                        case '[null]':
-                            echo 'This is an apple'
+                    // Switch statement for validation
+                    switch (prBody) {
+                        case 'null':
+                            echo "Description matches 'null'"
                             break
-                            
                         default:
-                            echo 'Unknown fruit'
+                            echo "Description has some expected value"
                     }
-                }
-            }
-        }
-      stage('E-Mail Notification') {
-        steps {
-           script {
-                     // Defining the email subject along with PR Details:
-                    def emailSubject = "On-Premise: CICD Pipeline #${env.BUILD_NUMBER}  ${env.JOB_NAME} is Triggered for PR: #${env.PR_NUM}  Title:${env.PR_TITLE}"
-
-                    // Defining the email body contents along with PR Details
-                    def emailBody = """
-                        Please find the application details for the Pipeline triggered,
-
-                        The HRM PROD pipeline ${env.JOB_NAME} #${env.BUILD_NUMBER} is just started and initiated deployment at [ ${JOB_TIME} ] on ${env.NODE_NAME} Jenkins NODE.
-
-
-                        Pull Request details:
-
-                        Pull Request Title  : ${env.PR_TITLE}
-                        Pull Request Body   : ${env.PR_BODY}
-                        Pull Request Number : ${env.PR_NUM}
-                        
-                        
-                        """
-
-              emailext (
-                   attachLog: true,
-                   subject: emailSubject,
-                   body: emailBody,
-                   to: "${EMAIL_PEOPLE}",
-                  )
-                }
-            }
-        }
-
 
   }
   
