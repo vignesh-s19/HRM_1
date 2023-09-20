@@ -142,7 +142,6 @@ pipeline {
         success {
           cleanWs()
         script {            
-
                     // Defining the email subject along with PR Details
                     def emailSubject = "On-Premise: CICD Pipeline #${env.BUILD_NUMBER}  ${env.JOB_NAME} is Success for PR: #${env.PR_NUM}  Title:${env.PR_TITLE}"
 
@@ -163,7 +162,7 @@ pipeline {
                         Pull Request Number : ${env.PR_NUM}
                         
 
-                        Pipline JOB URL: $BUILD_URL  //Can be accessed by only DevOps Team
+                        Pipeline JOB URL: $BUILD_URL  //Can be accessed by only DevOps Team
                         
                         """
 
@@ -201,7 +200,7 @@ pipeline {
                         Pull Request Number : ${env.PR_NUM}
                         
 
-                        Pipline JOB URL: $BUILD_URL  //Can be accessed by only DevOps Team
+                        Pipeline JOB URL: $BUILD_URL  //Can be accessed by only DevOps Team
                         
                         """
 
