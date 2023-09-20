@@ -92,7 +92,6 @@ pipeline {
                    subject: emailSubject,
                    body: emailBody,
                    to: "${EMAIL_TO_PEOPLE}",
-                   replyTo: "${EMAIL_REPLY_TO}"
                   )
                 }
             }
@@ -172,7 +171,6 @@ pipeline {
                    subject: emailSubject,
                    body: emailBody,
                    to: "${EMAIL_TO_PEOPLE}",
-                   replyTo: "${EMAIL_REPLY_TO}"
                   )
 
         }
@@ -210,7 +208,6 @@ pipeline {
                    subject: emailSubject,
                    body: emailBody,
                    to: "${EMAIL_TO_PEOPLE}",
-                   replyTo: "${EMAIL_REPLY_TO}"
                   )
                   
         }
