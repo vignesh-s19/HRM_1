@@ -69,9 +69,9 @@ pipeline {
 	  stage('switch condition') {
 		  steps{
 			  script{
-                    		switch (prBody) {
+                    		switch (env.PR_BODY) {
                      		case 'null':
-                          	echo "Description matches 'null'"
+                          	echo "Description matches null"
                         	break
                         default:
                             echo "Description has some expected value"
