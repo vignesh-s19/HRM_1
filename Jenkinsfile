@@ -6,7 +6,6 @@ pipeline {
     JOB_TIME          = sh(returnStdout: true, script: 'date "+%Y-%m-%d __ %H:%M:%S"').trim()
     ZIP_FILENAME      = "HRMS_V1_${TIMESTAMP}.zip"
     GIT_API_PAT_TOKEN = credentials('Pr_token')
-    EMAIL_PEOPLE   = "vigneshwaran.sivasubramanian@quadgen.com"
     
   }
 
@@ -28,8 +27,6 @@ pipeline {
                     // Parse the JSON response using JsonSlurper
                     def jsonSlurper = new groovy.json.JsonSlurper()
                     def prDetails = jsonSlurper.parseText(prDetailsJson)
-
-		    def prDetails = jsonSlurper.parseText(prDetailsJson)
 
 			// Define the file path where you want to save the JSON file
 			def filePath = "${WORKSPACE}/prDetails.json"
