@@ -29,7 +29,7 @@ pipeline {
                     def jsonSlurper = new groovy.json.JsonSlurper()
                     def prDetails = jsonSlurper.parseText(prDetailsJson)
 
-                    // Extract title, body, and ID
+                    // Extract title, body, and ID..
                     def prTitle  = prDetails.title
                     def prBody   = prDetails.body
                     def prNUM    = prDetails.number
