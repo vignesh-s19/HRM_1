@@ -28,21 +28,18 @@ pipeline {
                     def jsonSlurper = new groovy.json.JsonSlurper()
                     def prDetails = jsonSlurper.parseText(prDetailsJson)
 
-		 	// Assuming you have already obtained and parsed prDetails
+		    // Assuming you have already obtained and parsed prDetails
 
 			// Define the file path where you want to store the details
 			def filePath = '${WORKSPACE}/file.json'
 			
-			// Convert prDetails to a JSON string
-			def prDetailsJsonString = new groovy.json.JsonBuilder(prDetails).toPrettyString()
-			
-			// Write the JSON string to the local file
-			writeFile file: filePath, text: prDetailsJsonString
+			// Write the JSON data to the local file using writeJSON
+			writeJSON(file: filePath, json: prDetails, pretty: 4)
 			
 			// Verify that the file has been written
 			echo "Pull request details have been saved to $filePath"
 
-
+			
 
                     // Extract title, body, and ID..
                     def prTitle  = prDetails.title
