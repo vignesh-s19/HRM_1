@@ -44,6 +44,7 @@ pipeline {
                     env.PR_NUM = prNUM
 
 		    echo "The value is: ${PR_BODY}"
+		    echo "The value is: ${PR_TITLE}"
                 }
             }
         }
@@ -68,10 +69,11 @@ pipeline {
                     // Switch statement for validation
 	  stage('switch condition') {
 		  steps{
-                    switch (prBody) {
-                        case 'null':
-                            echo "Description matches 'null'"
-                            break
+			  script{
+                    		switch (prBody) {
+                     		case 'null':
+                          	echo "Description matches 'null'"
+                        	break
                         default:
                             echo "Description has some expected value"
                     }
