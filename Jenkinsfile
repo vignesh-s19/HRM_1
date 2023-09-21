@@ -43,8 +43,8 @@ pipeline {
                     env.PR_BODY = prBody
                     env.PR_NUM = prNUM
 
-		    echo "The value is: ${PR_BODY}"
-		    echo "The value is: ${PR_TITLE}"
+		    echo "The value is: ${env.PR_BODY}"
+		    echo "The value is: ${env.PR_TITLE}"
                 }
             }
         }
@@ -60,7 +60,6 @@ pipeline {
    //                      return;
    //                  } else {
    //                    output = sh(script: '"${env.PR_BODY}"', returnStdout: true).trim()
-
    //                  }
    //              }
    //          }
