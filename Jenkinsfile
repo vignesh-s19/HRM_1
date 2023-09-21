@@ -33,11 +33,15 @@ pipeline {
 			// Define the file path where you want to store the details
 			def filePath = '${WORKSPACE}/file.json'
 			
-			// Write the JSON data to the local file using writeJSON
-			writeJSON(file: filePath, json: prDetails, pretty: 4)
+			// Convert prDetails to a JSON string
+			def prDetailsJsonString = prDetails as String
+			
+			// Write the JSON string to the local file
+			writeFile file: filePath, text: prDetailsJsonString
 			
 			// Verify that the file has been written
 			echo "Pull request details have been saved to $filePath"
+
 
 			
 
