@@ -28,21 +28,14 @@ pipeline {
                     def jsonSlurper = new groovy.json.JsonSlurper()
                     def prDetails = jsonSlurper.parseText(prDetailsJson)
 
-			// Define the file path where you want to save the JSON file
+		    // Define the file path where you want to save the JSON file
 			def filePath = "${WORKSPACE}/prDetails.json"
 			
-			// Convert the prDetails object back to JSON string
-			def prDetailsJsonString = new groovy.json.JsonBuilder(prDetails).toPrettyString()
+			// Convert the prDetails object to JSON string using toJson method
+			def prDetailsJsonString = prDetails.toJson()
 			
-			// Write the JSON string to a temporary file
-			def tempFilePath = "${filePath}.temp"
-			writeFile file: tempFilePath, text: prDetailsJsonString
-			
-			// Use a shell command to rename the temporary file to the final file name
-			sh "mv ${tempFilePath} ${filePath}"
-			
-			// Optionally, you can archive the file for later access in Jenkins
-			archiveArtifacts artifacts: filePath, allowEmptyArchive: true
+			// Write the JSON string to a file
+			writeFile file: filePath, text: prDetails
 
 
                     // Extract title, body, and ID..
