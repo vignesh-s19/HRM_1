@@ -32,7 +32,7 @@ pipeline {
 			def filePath = "${WORKSPACE}/prDetails.json"
 			
 			// Convert the prDetails object to JSON string using toJson method
-			def prDetailsJsonString = prDetails.toJson()
+			// def prDetailsJsonString = prDetails.toJson()
 			
 			// Write the JSON string to a file
 			writeFile file: filePath, text: prDetails
