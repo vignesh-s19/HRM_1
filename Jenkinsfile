@@ -34,7 +34,7 @@ pipeline {
                     def prBody   = prDetails.body
                     def prNUM    = prDetails.number
 
-		    // Remove special characters from title and description
+		    // Remove special characters from title and description..
                     // prTitle = prTitle.replaceAll(/[^a-zA-Z0-9\s]/, '')
                     // prBody = prBody.replaceAll(/[^a-zA-Z0-9\s]/, '')
 
