@@ -35,8 +35,8 @@ pipeline {
                     def prNUM    = prDetails.number
 
 		    // Remove special characters from title and description
-                    prTitle = prTitle.replaceAll(/[^a-zA-Z0-9\s]/, '')
-                    prBody = prBody.replaceAll(/[^a-zA-Z0-9\s]/, '')
+                    // prTitle = prTitle.replaceAll(/[^a-zA-Z0-9\s]/, '')
+                    // prBody = prBody.replaceAll(/[^a-zA-Z0-9\s]/, '')
 
                     // Set environment variables
                     env.PR_TITLE = prTitle
